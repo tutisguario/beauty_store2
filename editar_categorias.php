@@ -85,18 +85,23 @@
         </div>
       </div>
 
-<?php       
-if(isset($_GET['id'])){
-    $codigo = $_GET['id'];
-    $query = "SELECT * FROM categorias WHERE id = $codigo";
-    $result = mysqli_query($conexion, $query);
+<?php    
+//BUSCA LOS DATOS    
+if(isset($_GET['id'])){ //si se recibe un id por GET, se arma la consulta para traer los datos
+    $codigo = $_GET['id']; //el id recibido se guarda en una variable
+    $query = "SELECT * FROM categorias WHERE id = $codigo"; //consulta sql para seleccionar la categoria con el id recibido
+    $result = mysqli_query($conexion, $query);//se ejecuta la consulta en la base de datos
     if(mysqli_num_rows($result) == 1) {
         $row = mysqli_fetch_array($result);
         $nombre = $row['nombre'];
         $descripcion = $row['descripcion'];
+        //guarda el nombre y descripcion actual en dos variables $nombre $descripcion
+        //para usarlos en el formulario  
     }
 }
-if (isset($_POST['update2'])){
+
+//GUARDA LOS CAMBIOS NUEVOS
+if (isset($_POST['update2'])){ //se activa cuando se presiona el boton de guardar
     $codigo = $_GET['id'];
     $nombre = $_POST['nombre'];
     $descripcion = $_POST['descripcion'];
@@ -105,10 +110,11 @@ if (isset($_POST['update2'])){
               SET nombre = '$nombre', 
                   descripcion = '$descripcion'
               WHERE id = $codigo";
+              //arma una consulta de actualizacion con los nuevos datos para ese id especifico
     $result = mysqli_query($conexion, $query);
-    if (!$result){
+    if (!$result){ //si la consulta falla, muestra un mensaje de error
         echo "El query de actualizar falló";
-    }else{
+    }else{ //si se ejecuta bien, muestra un mensaje de actualizado y la pagina te devuelve al listado
         ?>
         <script>alert("Registro actualizado");</script>
         <script>
@@ -138,6 +144,7 @@ if (isset($_POST['update2'])){
                     </div>
                     <div class="d-grid mt-3">
                       <input type="submit" class="btn btn-success" name="update2" value="Guardar">
+                      //tiene el nombre update2 para que se active el if de arriba
                     </div>
                   </form>
                 </div>

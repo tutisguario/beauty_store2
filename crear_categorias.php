@@ -95,16 +95,20 @@
               <div class="card my-5">
                 <div class="card-body">
                   <form action="grabar_categorias.php" method="POST">
+                    //hace un formulario html que envia (POST) los datos nuevos al archivo grabar_categorias
                     <div class="form-group mb-3">
-                      <label class="form-label">Nombre*</label>
+                      <label class="form-label">Nombre*</label> //el * indica que el campo es obligatorio
                       <input type="text" name="nombre" class="form-control" placeholder="Nombre de la categoría" required>
+                      //required te obliga a llenar el campo para poder mandar el formulario
                     </div>
                     <div class="form-group mb-3">
                       <label class="form-label">Descripción</label>
                       <input type="text" name="descripcion" class="form-control" placeholder="Descripción">
+                      //crea otro campo para la descripcion de la categoria nueva, este no es obligatorio
                     </div>
                     <div class="d-grid mt-3">
                       <input type="submit" class="btn btn-success" name="guardar_registro" value="Guardar">
+                      //hace un boton (type=submit) que envia los datos nuevos al archivo grabar_categorias
                     </div>
                   </form>
                 </div>

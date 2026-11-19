@@ -114,10 +114,11 @@
                     <div class="table-responsive">
                       <a href="crear_categorias.php">
                         <button type="button" class="btn btn-warning" name="update">Nuevo</button>
+                        //creamos un boton que nos lleva a crear_categorias
                       </a>
                       <table class="table table-hover table-borderless mb-0">
                         <thead>
-                          <tr>
+                          <tr>//encabezados de la tabla
                             <th>ID</th>
                             <th>Nombre</th>
                             <th>Descripción</th>
@@ -126,15 +127,18 @@
                         </thead>
                         <tbody>
                           <?php
-                          $query = "SELECT * FROM categorias";
+                          
+                          $query = "SELECT * FROM categorias";//trae los datos de la tabla
                           $result_categorias = mysqli_query($conexion, $query);
 
+                          //mientras haya filas en la tabla, va a mostrar los datos
                           while($row = mysqli_fetch_array($result_categorias)){ ?>
                           <tr>
                             <td><a href="#" class="text-muted"><?php echo $row['id']?></a></td>
                             <td><?php echo $row['nombre']?></td>
                             <td><?php echo $row['descripcion']?></td>
                             <td class="text-end">
+                              //enlace directo a borrar y editar, pasando el id correcto de cada uno
                               <a href="editar_categorias.php?id=<?php echo $row['id']?>">
                                 <button type="button" class="btn btn-warning" name="update">Modificar</button>
                               </a>
